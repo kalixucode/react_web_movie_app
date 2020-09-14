@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 // const foodILike = [
 //   {
 //     id: 1,
@@ -84,13 +84,13 @@ class App extends React.Component { //not function => return이 없다.
   // 즉 state에 바꾸고 싶은 data를 기입!!
   add = () => {
     // this.setState({ count: this.state.count + 1 }); //좋은 방법 아님, setState에서 이 state를 사용하는 것을 비추!
-    this.setState(current => ({ count : current.count + 1 })); //react가 current로 제공해줄 것이다.!!!!!!!!!!!!!!!
+    this.setState(current => ({ count : current.count + 1 })); //react가 current로 제공해줄 것이다.!!!!!!!!!!!!!!!setState를 호출할때마다 새로운 state와 함께 render function을 호출하는게 good!
   }; 
   minus = () => {
     //this.setState({ count: this.state.count -1 });
     this.setState(current => ({ count : current.count - 1}));
   };
-  render() {
+  render() { //React.Component가 제공하는 함수, render함수를 호출하기 전, 후로 몇개의 함수가 더 자동으로 호출된다. #1
     return (
       <div>
         <h1>The number is: {this.state.count}</h1>
@@ -101,6 +101,28 @@ class App extends React.Component { //not function => return이 없다.
   }
 }// function component는 function이고 return값이 있고 화면에 렌더링, class component는 claass but react component로부터 확장되고 screen에 표시
 //onClick = {this.add()}로 하면 클릭 안해도 동작!! 
+
+
+// #1
+//  Mounting : 태어나는 것
+//     order
+//     1. constructor() //from js when make class
+//     2. static getDerivedStateFromProps() //pass!
+//     3. render()
+//     4. componentDidMount()
+//  Updating : 업데이트
+//     order
+//     1. static getDerivedStateFromProps()
+//     2. shouldComponentUpdate()
+//     3. render()
+//     4. getSnapshotBeforeUpdate()
+//     5. componentDidUpdate()
+//  Unmounting : component가 죽는 것
+//     1. componentWillUnmount()
+//  https://ko.reactjs.org/docs/react-component.html#componentdidmount
+
+
+
 
 // **중요 !! State 올바르게 사용하기
 // 1. 직접 State를 수정하지 마라.

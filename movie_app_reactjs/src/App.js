@@ -57,3 +57,13 @@ class App extends React.Component {
 }
 //jsx에서는 class대신 className
 export default App;
+
+
+//빌드 순서(홈페이지 만들기)
+//1. gh-page 설치 : npm i gh-pages
+//
+//at package.json
+//2. url 넣기 : "hompage": "https://kalixucode.github.io/react_web_movie_app/"  => git 기준일때
+//3. script에 빌드어 추가
+    // 1. "deploy" : "gh-pages -d build" build => build파일명과 같게
+    // 2. "predeploy" : "npm run build"  => build라는 폴더를 얻기위한 작업

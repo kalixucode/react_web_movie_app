@@ -2,6 +2,7 @@ import React from "react";
 import { HashRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import About from "./routes/About";
+import Detail from "./routes/Detail";
 import Navigation from "./components/Navigation";
 import "./App.css";
 
@@ -19,13 +20,15 @@ function App() {
             <Navigation />
             <Route path = "/" exact={true} component={Home}/>
             <Route path = "/about" component={About}/> 
+            <Route path = "/movie/:id" component={Detail}/> 
         </HashRouter>
-    )
+    );
     //<Route path = "/home/introduction"> 이 경우 /home과 /home.introduction을 둘다 렌더링함. react! => exact={true}를 설정. 해당 url만 렌더링한다~
     //<Route>string<Route/>, <Route /> 둘다 가능
     //! Router 밖에서 link를 사용할 수 없다. !!
     // <Navigation /> <HashRouter></HashRouter> 불가능 
     // BrowserRouter는 해쉬태그가 없다. but git에서는 hashrouter를 쓰는걸 추천
+    // Router에 있는 모든 router에는 props를 가진다. => 사용할 줄 알아야함
 }
 
 export default App;
